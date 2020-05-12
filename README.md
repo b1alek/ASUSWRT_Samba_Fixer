@@ -15,15 +15,11 @@ Requirements:
 Usage: 
 =============
 
-Store fixsamba to /jffs on the router
+Downloadn, make exacutable and commit changes to router.
 ```
-chmod 755 /jffs/fixsamba
-```
+Using an SSH client to login to your router, then copy and paste the following command:
 
-```
-nvram set script_usbmount="/jffs/fixsamba"
-nvram commit
-
+/usr/sbin/wget --tries=3 --timeout=3 --no-check-certificate -O "/jffs/smbd_restart.sh" "https://raw.githubusercontent.com/b1alek/ASUSWRT_Samba_Restart_After_Boot/master/smbd_restart.sh" && chmod 755 /jffs/smbd_restart.sh && nvram set script_usbmount="/jffs/smbd_restart.sh" && nvram commit
 ```
 
 Upon either rebooting, or disconnecting / reconnecting the USB drive, the script will execute, kill all existing smbd processes, copy the custom configuration file into place, and restart smbd.
