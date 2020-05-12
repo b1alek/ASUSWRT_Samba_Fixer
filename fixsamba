@@ -20,8 +20,8 @@ do
    kill $pid
 done
 
-sleep 3m
+sleep 10s
 
-cp /jffs/smb.conf /etc/
-chmod 444 /etc/smb.conf
+#cp /jffs/smb.conf /etc/
+#chmod 444 /etc/smb.conf
 smbd -D -s /etc/smb.conf
